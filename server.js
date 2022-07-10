@@ -1,11 +1,18 @@
-const express = require('express');
-const serveStatic = require("serve-static")
-const history = require('connect-history-api-fallback');
-const path = require('path');
-app = express();
-app.use(serveStatic(path.join(__dirname, 'dist')));
-app.use(history(
-    {index: '/'}
-));
-const port = process.env.PORT || 3000;
-app.listen(port);
+const express = require('express')
+const path = require('path')
+const history = require('connect-history-api-fallback')
+
+const app = express()
+const staticFileMiddleware = express.static(path.join(__dirname))
+
+app.use(staticFileMiddleware)
+app.use(history())
+app.use(staticFileMiddleware)
+
+app.get('/', function (req, res) {
+  res.render(path.join(__dirname + '/index.html'))
+})
+
+app.listen(5000, function () {
+  console.log( 'Express serving on 5000!' )
+})
