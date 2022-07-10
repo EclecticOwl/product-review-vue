@@ -4,7 +4,7 @@
             <div>
                 <h1>Sign up</h1>
             </div>
-            <div class='notification' v-if="isNotification">
+            <div class='notification'>
                 <p>{{ notification }}</p>
             </div>
             <div class="form-input">
@@ -43,11 +43,13 @@ export default {
             username: '',
             password: '',
             password2: '',
+            notification: null,
+            isNotification: false,
         }
     },
     methods: {
         submitForm() {
-        if (this.password1 == this.password2) {
+        if (this.password === this.password2) {
             const formData = {
                 username: this.username,
                 password: this.password,
