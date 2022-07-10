@@ -45,6 +45,8 @@ export default {
         padding:  .5em 1em
         border-radius: 1em
         box-shadow: 1px 1px 4px grey
+    p
+        padding: 1em
 
 @media (min-width: 700px)
     .home-container
