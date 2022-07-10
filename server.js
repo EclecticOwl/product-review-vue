@@ -10,7 +10,7 @@ app.use(history())
 app.use(staticFileMiddleware)
 
 app.get('/', function (req, res) {
-  res.render(path.join(__dirname + '/index.html'))
+  res.render(path.join(__dirname + '/'))
 })
 
 app.listen(5000, function () {
