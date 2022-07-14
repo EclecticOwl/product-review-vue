@@ -276,16 +276,16 @@ export default {
         flex-direction: column
         gap: 1em
 .feedback-item
-    padding: 0 3em
-    padding-top: 1em
+    padding: 1em 3em
     background-color: white
-    height: 150px
+    height: fit-content
     display: grid
     gap: 4em
     grid-template-columns: 1fr 8fr
     border-radius: 1em
     box-shadow: 1px 1px 4px grey
     margin-bottom: 1em
+    
     .feedback-content
         display: flex
         flex-direction: column
@@ -321,4 +321,9 @@ export default {
     padding-left: 1em
     .product-owner
         font-size: .5em
+
+@media (max-width: 450px)
+    .main-container
+        margin-left: 1em
+        margin-right: 1em
 </style>
