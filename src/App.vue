@@ -2,6 +2,7 @@
   <HamBurger class="mobile-menu"></HamBurger>
   <NavBar class="main-menu"></NavBar>
   <router-view></router-view>
+  <p class="login-username" v-if="isUsername = 'Anonymous User'">Signed in as: {{ isUsername }}</p>
 </template>
 
 <script>
@@ -10,6 +11,11 @@ import HamBurger from './components/HamBurger.vue'
 import NavBar from './components/NavBar.vue'
 export default {
   name: 'App',
+  computed: {
+    isUsername() {
+      return this.$store.getters.checkIfUsername
+    }
+  },
   components: {
     HamBurger,
     NavBar,
@@ -95,4 +101,9 @@ body
     flex-direction: column
     justify-content: center
     align-items: center
+.login-username
+  position: absolute
+  bottom: 5px
+  right: 5px
+  font-size: .6em
 </style>

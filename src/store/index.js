@@ -4,8 +4,12 @@ export default createStore({
   state: {
     token: '',
     isAuthenticated: false,
+    username: '',
   },
   getters: {
+    checkIfUsername(state) {
+      return state.username ? state.username : 'Anonymous User'
+    }
   },
   mutations: {
     initializeStore(state) {
@@ -25,6 +29,12 @@ export default createStore({
       state.token = ''
       state.isAuthenticated = false
     },
+    setUsername(state, username) {
+      state.username = username
+    },
+    removeUsername(state) {
+      state.username = ''
+    }
   },
   actions: {
   },

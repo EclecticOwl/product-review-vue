@@ -27,6 +27,7 @@ export default {
           .post('/auth/token/logout/', token)
           .then( () => {
               this.$store.commit('removeToken')
+              this.$store.commit('removeUsername')
               localStorage.removeItem('token')
               this.$router.push('/')
               this.$forceUpdate

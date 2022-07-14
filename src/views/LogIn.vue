@@ -44,6 +44,7 @@ export default {
                     this.$store.commit('setToken', token)
                     axios.defaults.headers.common['Authorization'] = 'Token ' + token
                     localStorage.setItem('token', token)
+                    this.$store.commit('setUsername', this.username)
                     this.$router.push('/')
                 })
                 .catch(err => {
