@@ -1,4 +1,5 @@
 <template>
+    <div class="notification-container" v-if="isNotification"><p>{{ notification }}</p></div>
     <div class="form-container">
         <form @submit.prevent="submitForm" class="form-main">
             <div>
@@ -28,6 +29,8 @@ export default {
         return {
             username: '',
             password: '',
+            notification: '',
+            isNotification: false,
         }
     },
     methods: {
@@ -48,14 +51,23 @@ export default {
                     this.$router.push('/')
                 })
                 .catch(err => {
-                    console.log(err)
+                    if (err.response.status == 400) {
+                        this.notifier("Your username or password is invalid. Please try again.")
+                    }
                 })
         },
         goBack() {
             this.$router.push('/')
+        },
+        notifier(text) {
+            this.notification = text
+            this.isNotification = true
+            this.username = ''
+            this.password = ''
+
+            setTimeout(() => this.notification = null, 5000)
+            setTimeout(() => this.isNotification = false, 5000)
         }
     }
 }
 </script>
-<style lang="sass">
-</style>
